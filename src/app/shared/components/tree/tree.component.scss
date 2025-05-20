@@ -1,0 +1,40 @@
+.tree {
+  list-style-type: none;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+
+  & > li .tree {
+    padding-left: 20px;
+  }
+}
+
+.node {
+  cursor: pointer;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  transition: var(--trans-05s);
+
+  &:hover {
+    color: var(--accent-hover);
+  }
+
+  &.deleted {
+    color: #999;
+    &:hover {
+      color: #eee;
+    }
+  }
+}
+
+.arrow {
+  margin-right: 8px;
+  font-weight: bold;
+  transition: var(--trans-02s);
+
+  &.expanded {
+    transform: rotate(180deg);
+  }
+}

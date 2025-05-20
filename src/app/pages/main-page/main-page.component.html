@@ -1,0 +1,13 @@
+<div class="main-page">
+  <div class="app-container">
+    <h1>Tree Component</h1>
+
+    @if (treeNodes()?.length) {
+      <app-tree [nodes]="treeNodes() ?? []"></app-tree>
+    }
+
+    @if (loading()) {
+      <app-loading></app-loading>
+    }
+  </div>
+</div>

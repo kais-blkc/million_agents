@@ -1,0 +1,29 @@
+<ul class="tree">
+  @for (node of nodes(); track node.id) {
+    <li>
+      <div
+        class="node"
+        [class.deleted]="node.is_deleted"
+        (click)="toggleNode(node)"
+      >
+        @if (hasChildren(node)) {
+          <span
+            class="arrow"
+            [class.expanded]="isExpanded(node)"
+          >
+            &#8595;
+          </span>
+        }
+
+        <span class="node-content"> {{ node.id }} - {{ node.title }} </span>
+      </div>
+
+      @if (hasChildren(node) && isExpanded(node)) {
+        <app-tree
+          [nodes]="node.children"
+          @fadeIn
+        ></app-tree>
+      }
+    </li>
+  }
+</ul>
