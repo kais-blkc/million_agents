@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { TreeNode } from '../types/tree.types';
 import { delay, Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,8 @@ export class TreeService {
     const delayTime: number = Math.floor(Math.random() * 1000 + 200);
     console.log(`Delay: ${delayTime}ms`);
 
-    return this.http.get<TreeNode[]>('/tree-data.json').pipe(delay(delayTime));
+    return this.http
+      .get<TreeNode[]>(environment.treeDataUrl)
+      .pipe(delay(delayTime));
   }
 }
